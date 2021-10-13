@@ -2,13 +2,10 @@
 
 namespace Tests;
 
-use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Testing\TestResponse;
 
-abstract class TestCase extends BaseTestCase
+trait MakesJsonApiRequests
 {
-    use CreatesApplication, MakesJsonApiRequests;
-
     public function json($method, $uri, array $data = [], array $headers = []): TestResponse
     {
         $headers['accept'] = 'application/vnd.api+json';

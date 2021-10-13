@@ -2,11 +2,9 @@
 
 namespace Tests\Feature\Articles;
 
-
 use App\Models\Article;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
-
 
 class ListArticlesTest extends TestCase
 {
@@ -15,7 +13,6 @@ class ListArticlesTest extends TestCase
     /** @test */
     public function can_fetch_a_single_article()
     {
-
         $this->withoutExceptionHandling();
 
         $article = Article::factory()->create();

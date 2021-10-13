@@ -14,9 +14,8 @@ class ValidateJsonApiHeadersTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        Route::any('test_route', function () {
-            return 'OK';
-        })->middleware(ValidateJsonApiHeaders::class);
+        Route::any('test_route', fn() => 'OK')
+            ->middleware(ValidateJsonApiHeaders::class);
     }
 
     /** @test */
