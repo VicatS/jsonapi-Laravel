@@ -10,25 +10,24 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
-    /**
-     * @param Article $article
-     * @return ArticleResource
-     */
     public function show(Article $article): ArticleResource
     {
         return ArticleResource::make($article);
     }
 
-    /**
-     * @return ArticleCollection
-     */
     public function index(): ArticleCollection
     {
         return ArticleCollection::make(Article::all());
     }
 
-    public function create(Request $request)
+    public function create(Request $request): ArticleResource
     {
+        $request->validate([
+            'data.attributes.title' => ['required', 'min:4'],
+            'data.attributes.slug' => ['required'],
+            'data.attributes.content' => ['required']
+        ]);
+
         $article = Article::create([
             'title' => $request->input('data.attributes.title'),
             'slug' => $request->input('data.attributes.slug'),
