@@ -41,7 +41,7 @@ class Handler extends ExceptionHandler
         });
     }
 
-    protected function invalidJson($request, ValidationException $exception)
+    protected function invalidJson($request, ValidationException $exception): JsonResponse
     {
         $title = $exception->getMessage();
         /*$errors = [];
