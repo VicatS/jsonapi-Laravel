@@ -10,17 +10,12 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
-    public function show(Article $article): ArticleResource
-    {
-        return ArticleResource::make($article);
-    }
-
     public function index(): ArticleCollection
     {
         return ArticleCollection::make(Article::all());
     }
 
-    public function create(Request $request): ArticleResource
+    public function store(Request $request): ArticleResource
     {
         $request->validate([
             'data.attributes.title' => ['required', 'min:4'],
@@ -34,6 +29,11 @@ class ArticleController extends Controller
             'content' => $request->input('data.attributes.content')
         ]);
 
+        return ArticleResource::make($article);
+    }
+
+    public function show(Article $article): ArticleResource
+    {
         return ArticleResource::make($article);
     }
 }

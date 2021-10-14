@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Articles;
+namespace Tests\Feature;
 
 use App\Http\Middleware\ValidateJsonApiHeaders;
 use Illuminate\Foundation\Testing\RefreshDatabase;
